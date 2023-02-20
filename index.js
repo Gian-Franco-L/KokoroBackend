@@ -13,6 +13,10 @@ const handdleErrors = require('./middleware/handdleErrors')
 app.use(express.json())
 app.use(cors());
 
+app.get("/", (req, res) =>{
+  res.send("la pagina de inicio")
+})
+
 app.use('/api/products/', productsRouter)
 
 app.use('/api/purchases/', purchasesRouter)
