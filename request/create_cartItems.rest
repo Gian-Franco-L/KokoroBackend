@@ -1,0 +1,8 @@
+POST http://localhost:8000/api/purchases
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzVmYzk0M2FmMmMyNzVhMjZlZjkyYSIsInVzZXJOYW1lIjoiWGVybyIsImlhdCI6MTY3MzkxOTY2MCwiZXhwIjoxNjc0NTI0NDYwfQ.SHkthrshJ2OS7r2mdkR5LsCKPekmYnboJm7kyEFZXtQ
+
+{
+  "info": [{"name": "hola", "amount": 1, "price": 200}, {"name": "como", "amount": 2, "price": 300}],
+  "total": 1234
+}

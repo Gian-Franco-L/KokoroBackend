@@ -1,0 +1,19 @@
+POST http://localhost:8000/api/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzJiODhkOWEzYzA5NDUxNjAxODZhMSIsInVzZXJOYW1lIjoiWGVybyIsImlhdCI6MTY3MDE4MjExOCwiZXhwIjoxNjcwNzg2OTE4fQ.l9EDd4o6JDEIUZFnK7L-FPT-tv4KdUmKaRgHj40oh7I
+
+{
+  "Name": "Bolso de lienzo",
+  "Price": 1000,
+  "Date": 20221204,
+  "Size": "40x35",
+  "Material": "Encaje y puntilla",
+  "Stuffing": "none",
+  "Img": "https://i.postimg.cc/xdHPnFrB/1.jpg"
+}
+###
+
+POST http://localhost:8000/api/products
+Content-Type: application/json
+
+{}

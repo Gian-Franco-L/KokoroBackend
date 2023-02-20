@@ -1,0 +1,12 @@
+PUT http://localhost:3001/api/products/6359a5dcd23df68a7ed77c44
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmQ4NWRkMGZmZTZjM2NhMTliYjg5NiIsImlhdCI6MTY2ODEyMjA5MSwiZXhwIjoxNjY4NzI2ODkxfQ.axTODl_5_CCP3WDxTg8qD9N7txIYzdtCnvCQV6L7jf0
+
+{
+  "Name": "asd",
+  "Price": 200,
+  "Date": "1/10/2000",
+  "Size": "40cmX40cm",
+  "Fabric": "Lana",
+  "Stuffing": "Algohodon"
+}

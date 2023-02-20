@@ -1,0 +1,3 @@
+DELETE http://localhost:3001/api/purchases/6359a576d23df68a7ed77c3f
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmQ4NWRkMGZmZTZjM2NhMTliYjg5NiIsImlhdCI6MTY2ODEyMjA5MSwiZXhwIjoxNjY4NzI2ODkxfQ.axTODl_5_CCP3WDxTg8qD9N7txIYzdtCnvCQV6L7jf0
