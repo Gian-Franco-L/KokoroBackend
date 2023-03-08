@@ -2,10 +2,11 @@ const productsRouter = require('express').Router()
 const Product = require('../models/Product')
 
 productsRouter.get('/', (req, res) =>{
-  Product.find({})
-    .then(prod =>{
-      res.json(prod)
-    })
+  // Product.find({})
+  //   .then(prod =>{
+  //     res.json(prod)
+  //   })
+    res.send("la pagina de inicio")
 })
 
 productsRouter.delete('/:id', (req, res) =>{
