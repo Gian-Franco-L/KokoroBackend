@@ -9,12 +9,16 @@ const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
 const notFound = require('./middleware/notFound')
 const handdleErrors = require('./middleware/handdleErrors')
+const Product = require('./models/Product')
 
 app.use(express.json())
 app.use(cors());
 
 app.get("/", (req, res) =>{
-  res.send("la pagina de inicio")
+  Product.find({})
+    .then(prod =>{
+      res.json(prod)
+    })
 })
 
 app.use('/api/products/', productsRouter)
