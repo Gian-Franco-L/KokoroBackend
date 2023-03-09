@@ -1,11 +1,25 @@
 const productsRouter = require('express').Router()
 const Product = require('../models/Product')
+const mongodb = require('../mongo')
+
 
 productsRouter.get('/', (req, res) =>{
-  Product.find({})
-    .then(prod =>{
-      res.send(prod)
-    })
+  try{
+    mongodb()
+      .then(() =>{
+        Product.find({})
+          .then(prod =>{
+            console.log(prod);
+            res.json(prod)
+          })
+      })
+      .catch(e =>{
+        res.status(400).json(e)
+      })
+  }catch(e){
+    res.status(400).json(e)
+  }
+  
 })
 
 productsRouter.delete('/:id', (req, res) =>{
