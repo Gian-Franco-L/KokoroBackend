@@ -4,8 +4,7 @@ const Product = require('../models/Product')
 productsRouter.get('/', (req, res) =>{
   Product.find({})
     .then(prod =>{
-      console.log(prod);
-      res.json(prod)
+      res.send(prod)
     })
 })
 
