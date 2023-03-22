@@ -9,6 +9,7 @@ const userSchema = new Schema({
   cartItems: Array,
   token: String,
   access: String,
+  resetToken: String,
   purchase:[{
     type: Schema.Types.ObjectId,
     ref: 'Purchase'

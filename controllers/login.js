@@ -3,8 +3,8 @@ const bcrypt = require('bcrypt')
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 
-loginRouter.post('/', async(request, response) =>{
-  const { body } = request
+loginRouter.post('/', async(req, res) =>{
+  const { body } = req
   const { logUser, logPassword } = body
   const user = await User.findOne({ "userName": logUser })
   const passwordCorrect = user == null
@@ -12,7 +12,7 @@ loginRouter.post('/', async(request, response) =>{
     : await bcrypt.compare(logPassword, user.passwordHash)
 
   if(!(user && passwordCorrect)){
-    response.status(401).json({
+    res.status(401).json({
       error: 'invalid user or password'
     })
   }else{
@@ -25,7 +25,7 @@ loginRouter.post('/', async(request, response) =>{
       expiresIn: 60 * 60 * 24 * 7
     })
   
-    response.send({
+    res.send({
       name: user.name,
       userName: user.userName,
       email: user.email,

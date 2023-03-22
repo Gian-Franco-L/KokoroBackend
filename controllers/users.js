@@ -5,6 +5,7 @@ const usersRouter = require('express').Router()
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 
+
 //en el index ya tiene una ruta '/api/users' asi que usamos '/'
 usersRouter.get('/', async(req, res) =>{ 
   const users =  await User.find({})
@@ -17,7 +18,7 @@ usersRouter.get('/', async(req, res) =>{
 
 usersRouter.post('/', async (req, res) =>{
   const { body } = req
-  const { userName, name, password, email, phone, cartItems = [], _id } = body
+  const { userName, name, password, email, phone, cartItems = [], _id} = body
 
   const passwordHash = await bcrypt.hash(password, 10)
 
@@ -38,13 +39,11 @@ usersRouter.post('/', async (req, res) =>{
     phone: phone,
     cartItems: cartItems,
     token: token,
-    access: access = "no"
+    access: access = "no",
+    resetToken: resetToken = ""
   })
 
-  //esperamos al user.save, el usuario que se acaba de guardar nos lo devuelve
   const savedUser = await user.save()
-
-  //y lo devolvemos
   res.json(savedUser)
 })
 
