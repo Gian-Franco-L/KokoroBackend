@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose')
 const userSchema = new Schema({
   info: Array,
   total: Number,
-  status: Status,
+  status: String,
   user:{
     type: Schema.Types.ObjectId,
     ref: 'User'
