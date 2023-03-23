@@ -62,7 +62,7 @@ usersRouter.put('/', async(req, res) =>{
         from: process.env.GMAIL_USERNAME,
         to: emailPassword,
         subject: 'Enlace para recuperar contraseña',
-        text:`${emailPort}/resetpassword/${user._id}/${token}`
+        text:`${emailPort}/#/resetpassword/${user._id}/${token}`
       }
 
       transporter.sendMail(mailOptions, (err, res) =>{
