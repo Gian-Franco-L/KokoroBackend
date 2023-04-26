@@ -1,5 +1,4 @@
 const ERROR_HANDLERS = {
-
   CastError: res =>
     res.status(400).end({ error: 'id used is malformed' }),
 
@@ -13,7 +12,6 @@ const ERROR_HANDLERS = {
     res.status(401).json({ error: 'token expired' }),
   
   defaultError: res => res.status(500).end()
-  
 }
 
 module.exports = (error, request, response, next) =>{

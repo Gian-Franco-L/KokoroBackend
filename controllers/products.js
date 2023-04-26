@@ -2,7 +2,7 @@ const productsRouter = require('express').Router()
 const Product = require('../models/Product')
 
 
-productsRouter.get('/', (req, res) =>{
+productsRouter.get('/', (req, res, next) =>{
     Product.find({})
       .then(prod =>{
         res.json(prod)
@@ -12,7 +12,7 @@ productsRouter.get('/', (req, res) =>{
       })
 })
 
-productsRouter.delete('/:id', (req, res) =>{
+productsRouter.delete('/:id', (req, res, next) =>{
   const { id } = req.params
 
   Product.findByIdAndDelete(id)
@@ -32,6 +32,8 @@ productsRouter.post('/', async (req, res, next) =>{
     Size: req.body.Size,
     Material: req.body.Material,
     Stuffing: req.body.Stuffing,
+    Type: req.body.Type,
+    Status: req.body.Status,
     Img: req.body.Img
   })
 
@@ -54,6 +56,8 @@ productsRouter.put('/:id', (req, res) =>{
     Size: reqProduct.Size,
     Material: reqProduct.Fabric,
     Stuffing: reqProduct.Stuffing,
+    Type: reqProduct.Type,
+    Status: reqProduct.Status,
     Img: reqProduct.Img
   }
 

@@ -13,7 +13,7 @@ purchasesRouter.get('/', (req, res) =>{
     })
 })
 
-purchasesRouter.delete('/:id', userExtractor, (req, res) =>{
+purchasesRouter.delete('/:id', userExtractor, (req, res, next) =>{
   const { id } = req.params
 
   Purchase.findByIdAndDelete(id)
@@ -28,6 +28,8 @@ purchasesRouter.delete('/:id', userExtractor, (req, res) =>{
 purchasesRouter.post('/', userExtractor, async (req, res, next) =>{
   const { body } = req
   const { info, total, email, status="" } = body
+
+  console.log(body)
 
   const user = await User.findOne({email})
 

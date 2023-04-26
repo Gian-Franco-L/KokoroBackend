@@ -1,15 +1,17 @@
 POST http://localhost:8000/api/products
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzJiODhkOWEzYzA5NDUxNjAxODZhMSIsInVzZXJOYW1lIjoiWGVybyIsImlhdCI6MTY3MDE4MjExOCwiZXhwIjoxNjcwNzg2OTE4fQ.l9EDd4o6JDEIUZFnK7L-FPT-tv4KdUmKaRgHj40oh7I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWI1YjEyMDVhYTJjNzY0MjkwYjRjNSIsInVzZXJOYW1lIjoibW9uaSIsImlhdCI6MTY4MTMwMjk1OCwiZXhwIjoxNjgxOTA3NzU4fQ.j8Qng-o1Y-jg3qbDIfqDIQfngIeBkDKmDd9SkFiiYpU
 
 {
-  "Name": "Bolso de lienzo",
-  "Price": 1000,
-  "Date": 20221204,
-  "Size": "40x35",
-  "Material": "Encaje y puntilla",
+  "Name": "Bufanda autitos",
+  "Price": 800,
+  "Date": 230424,
+  "Size": "100x17cm",
+  "Material": "Polar",
   "Stuffing": "none",
-  "Img": "https://i.postimg.cc/xdHPnFrB/1.jpg"
+  "Type": "invierno",
+  "Status": "on",
+  "Img": ""
 }
 ###
 

@@ -7,6 +7,8 @@ const productSchema = new Schema({
   Size: String,
   Material: String,
   Stuffing: String,
+  Type: String,
+  Status: String,
   Img: String
 })
 

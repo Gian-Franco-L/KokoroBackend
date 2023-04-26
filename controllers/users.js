@@ -20,6 +20,15 @@ usersRouter.post('/', async (req, res) =>{
   const { body } = req
   const { userName, name, password, email, phone, cartItems = [], _id} = body
 
+  const searchUser = await User.findOne({ "userName": userName })
+  const searchEmail = await User.findOne({ "email": email })
+  const isNumber = /^([0-9 +-])*$/.exec(phone)
+
+  if(searchUser || !password || !name || name.length > 25 || !email || searchEmail || !phone || isNumber === null){
+    res.status(409).end()
+    return 0;
+  }
+
   const passwordHash = await bcrypt.hash(password, 10)
 
   const userForToken = {
@@ -47,7 +56,7 @@ usersRouter.post('/', async (req, res) =>{
   res.json(savedUser)
 })
 
-usersRouter.delete('/:id', (req, res) =>{
+usersRouter.delete('/:id', (req, res, next) =>{
   const { id } = req.params
 
   User.findByIdAndDelete(id)
