@@ -5,7 +5,9 @@ const jwt = require('jsonwebtoken')
 
 loginRouter.post('/', async(req, res) =>{
   const { body } = req
-  const { logUser, logPassword } = body
+  const logUser = body.logUser.toLowerCase()
+  const logPassword = body.logPassword.toLowerCase()
+  
   const user = await User.findOne({ "userName": logUser })
   const passwordCorrect = user == null
     ? false

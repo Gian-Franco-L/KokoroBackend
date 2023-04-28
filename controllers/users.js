@@ -18,7 +18,9 @@ usersRouter.get('/', async(req, res) =>{
 
 usersRouter.post('/', async (req, res) =>{
   const { body } = req
-  const { userName, name, password, email, phone, cartItems = [], _id} = body
+  const { name, email, phone, cartItems = [], _id} = body
+  const userName = body.userName.toLowerCase()
+  const password = body.password.toLowerCase()
 
   const searchUser = await User.findOne({ "userName": userName })
   const searchEmail = await User.findOne({ "email": email })
