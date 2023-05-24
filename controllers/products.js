@@ -55,6 +55,10 @@ productsRouter.put('/:id', (req, res) =>{
   const reqProduct = req.body[0]
   const userName = req.body[1]
 
+  console.log(id);
+  console.log(reqProduct);
+  console.log(userName);
+
   if(userName === process.env.ADMIN){
     const newProductInfo = {
       Name: reqProduct.Name,
