@@ -13,7 +13,9 @@ const notFound = require('./middleware/notFound')
 const handdleErrors = require('./middleware/handdleErrors')
 
 app.use(express.json())
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 app.use('/api/products', productsRouter)
 
