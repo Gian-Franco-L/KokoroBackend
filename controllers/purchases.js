@@ -15,7 +15,9 @@ purchasesRouter.get('/', (req, res) =>{
 
 purchasesRouter.delete('/:id', userExtractor, (req, res, next) =>{
   const { id } = req.params
+  const { userName } = req.params
 
+  if(userName === process.env.ADMIN){
   Purchase.findByIdAndDelete(id)
     .then(() =>{
       res.status(204).end()
@@ -23,13 +25,14 @@ purchasesRouter.delete('/:id', userExtractor, (req, res, next) =>{
     .catch(err =>{
       next(err)
     })
+  }else{
+    res.status(409).end()
+  }
 })
 
 purchasesRouter.post('/', userExtractor, async (req, res, next) =>{
   const { body } = req
   const { info, total, email, status="" } = body
-
-  console.log(body)
 
   const user = await User.findOne({email})
 
@@ -60,8 +63,10 @@ purchasesRouter.post('/', userExtractor, async (req, res, next) =>{
 
 purchasesRouter.put('/:id', userExtractor, (req, res) =>{
   const { id } = req.params
+  const { userName } = req.params
   const reqPurchase = req.body
 
+  if(userName === process.env.ADMIN){
   const newPurchaseInfo ={
     purchase: reqPurchase.purchase
   }
@@ -70,6 +75,9 @@ purchasesRouter.put('/:id', userExtractor, (req, res) =>{
     .then(result =>{
       res.json(result)
     })
+  }else{
+    res.status(409).end()
+  }
 })
 
 module.exports = purchasesRouter

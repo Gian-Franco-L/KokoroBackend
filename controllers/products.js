@@ -14,7 +14,9 @@ productsRouter.get('/', (req, res, next) =>{
 
 productsRouter.delete('/:id', (req, res, next) =>{
   const { id } = req.params
+  const { userName } = req.params
 
+  if(userName === process.env.ADMIN){
   Product.findByIdAndDelete(id)
     .then(() =>{
       res.status(204).end()
@@ -22,6 +24,9 @@ productsRouter.delete('/:id', (req, res, next) =>{
     .catch(err =>{
       next(err)
     })
+  }else{
+    res.status(409).end()
+  }
 })
 
 productsRouter.post('/', async (req, res, next) =>{
@@ -47,24 +52,29 @@ productsRouter.post('/', async (req, res, next) =>{
 
 productsRouter.put('/:id', (req, res) =>{
   const { id } = req.params
-  const reqProduct = req.body
+  const reqProduct = req.body[0]
+  const userName = req.body[1]
 
-  const newProductInfo = {
-    Name: reqProduct.Name,
-    Price: reqProduct.Price,
-    Date: reqProduct.Date,
-    Size: reqProduct.Size,
-    Material: reqProduct.Fabric,
-    Stuffing: reqProduct.Stuffing,
-    Type: reqProduct.Type,
-    Status: reqProduct.Status,
-    Img: reqProduct.Img
+  if(userName === process.env.ADMIN){
+    const newProductInfo = {
+      Name: reqProduct.Name,
+      Price: reqProduct.Price,
+      Date: reqProduct.Date,
+      Size: reqProduct.Size,
+      Material: reqProduct.Fabric,
+      Stuffing: reqProduct.Stuffing,
+      Type: reqProduct.Type,
+      Status: reqProduct.Status,
+      Img: reqProduct.Img
+    }
+  
+    Product.findByIdAndUpdate(id, newProductInfo)
+      .then(result =>{
+        res.json(result)
+      })
+  }else{
+    res.status(409).end()
   }
-
-  Product.findByIdAndUpdate(id, newProductInfo)
-    .then(result =>{
-      res.json(result)
-    })
 })
 
 module.exports = productsRouter

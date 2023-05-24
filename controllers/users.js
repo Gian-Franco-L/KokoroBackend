@@ -60,7 +60,9 @@ usersRouter.post('/', async (req, res) =>{
 
 usersRouter.delete('/:id', (req, res, next) =>{
   const { id } = req.params
+  const { userName } = req.params
 
+  if(userName === process.env.ADMIN){
   User.findByIdAndDelete(id)
     .then(() =>{
       res.status(204).end()
@@ -68,6 +70,9 @@ usersRouter.delete('/:id', (req, res, next) =>{
     .catch(err =>{
       next(err)
     })
+  }else{
+    res.status(409).end()
+  }
 })
 
 usersRouter.put('/', async(req, res) =>{
