@@ -1,7 +1,6 @@
 require('dotenv').config()
 require('./mongo')
 const express = require('express')
-const cors = require('cors')
 const app = express()
 const productsRouter = require('./controllers/products')
 const purchasesRouter = require('./controllers/purchases')
@@ -13,7 +12,6 @@ const notFound = require('./middleware/notFound')
 const handdleErrors = require('./middleware/handdleErrors')
 
 app.use(express.json())
-app.use(cors());
 
 app.use('/api/products', productsRouter)
 
