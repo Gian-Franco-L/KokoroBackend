@@ -15,9 +15,7 @@ purchasesRouter.get('/', (req, res) =>{
 
 purchasesRouter.delete('/:id', userExtractor, (req, res, next) =>{
   const { id } = req.params
-  const { userName } = req.params
 
-  if(userName === process.env.ADMIN){
   Purchase.findByIdAndDelete(id)
     .then(() =>{
       res.status(204).end()
@@ -25,14 +23,10 @@ purchasesRouter.delete('/:id', userExtractor, (req, res, next) =>{
     .catch(err =>{
       next(err)
     })
-  }else{
-    res.status(409).end()
-  }
 })
 
 purchasesRouter.post('/', userExtractor, async (req, res, next) =>{
-  const { body } = req
-  const { info, total, email, status="" } = body
+  const { info, total, email } = req.body
 
   const user = await User.findOne({email})
 
@@ -41,15 +35,13 @@ purchasesRouter.post('/', userExtractor, async (req, res, next) =>{
       error: 'Purchase.content is missing'
     })
   }
-  
-  
+
   const newPurchase = new Purchase({
     info: info,
     total: total,
-    status: status,
+    status: "on",
     user: user._id
   })
-
 
   try{
     const savedPurchase = await newPurchase.save()
@@ -63,21 +55,12 @@ purchasesRouter.post('/', userExtractor, async (req, res, next) =>{
 
 purchasesRouter.put('/:id', userExtractor, (req, res) =>{
   const { id } = req.params
-  const { userName } = req.params
-  const reqPurchase = req.body
+  const changedPurchase = req.body
 
-  if(userName === process.env.ADMIN){
-  const newPurchaseInfo ={
-    purchase: reqPurchase.purchase
-  }
-
-  Purchase.findByIdAndUpdate(id, newPurchaseInfo)
+  Purchase.findByIdAndUpdate(id, changedPurchase)
     .then(result =>{
       res.json(result)
     })
-  }else{
-    res.status(409).end()
-  }
 })
 
 module.exports = purchasesRouter

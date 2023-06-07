@@ -12,7 +12,8 @@ usersRouter.get('/', async(req, res) =>{
     .populate('purchase', {
       info: 1,
       total: 1,
-      _id: 0})
+      status: 1,
+      _id: 1})
   res.json(users)
 })
 
