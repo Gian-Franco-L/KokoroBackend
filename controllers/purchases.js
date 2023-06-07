@@ -5,11 +5,11 @@ const userExtractor = require('../middleware/userExtractor')
 
 purchasesRouter.get('/', (req, res) =>{
   Purchase.find({}).populate('user', {
-    username: 1,
-    name: 1
+    name: 1,
+    status: 1
   })
-    .then(purch =>{
-      res.json(purch)
+  .then(purch =>{
+    res.json(purch)
     })
 })
 
