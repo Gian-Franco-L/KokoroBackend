@@ -3,15 +3,15 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWI1YjEyMDVhYTJjNzY0MjkwYjRjNSIsInVzZXJOYW1lIjoibW9uaSIsImlhdCI6MTY4MTMwMjk1OCwiZXhwIjoxNjgxOTA3NzU4fQ.j8Qng-o1Y-jg3qbDIfqDIQfngIeBkDKmDd9SkFiiYpU
 
 {
-  "Name": "Pantalon rojo",
-  "Price": 140015001600,
-  "Date": 230605,
-  "Size": "T2, T4, T6",
-  "Material": "Polar",
-  "Stuffing": "none",
+  "Name": "Alfombra de baño gato",
+  "Price": 1700,
+  "Date": 230725,
+  "Size": "45x45cm",
+  "Material": "Algohodon",
+  "Stuffing": "Guata",
   "Type": "invierno",
   "Status": "on",
-  "Img": "https://i.postimg.cc/sD1ddj7s/66-min.jpg"
+  "Img": "https://i.postimg.cc/6QB17nsp/86-min.jpg"
 }
 ###
 

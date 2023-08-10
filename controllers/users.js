@@ -1,12 +1,9 @@
 const bcrypt = require( 'bcrypt')
-//clase que nos permite crear un router de forma separada del index
 const usersRouter = require('express').Router()
-//importamos el modelo
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 
 
-//en el index ya tiene una ruta '/api/users' asi que usamos '/'
 usersRouter.get('/', async(req, res) =>{ 
   const users =  await User.find({})
     .populate('purchase', {
@@ -59,21 +56,21 @@ usersRouter.post('/', async (req, res) =>{
   res.json(savedUser)
 })
 
-usersRouter.delete('/:id', (req, res, next) =>{
+usersRouter.delete('/:id/:userName', (req, res, next) =>{
   const { id } = req.params
   const { userName } = req.params
 
-  if(userName === process.env.ADMIN){
-  User.findByIdAndDelete(id)
+  User.updateOne(
+    { "userName": userName.toLowerCase() },
+    { $pull: { purchase: { $in: id } } },
+    { new: true }
+  )
     .then(() =>{
       res.status(204).end()
     })
     .catch(err =>{
-      next(err)
+      console.log(err)
     })
-  }else{
-    res.status(409).end()
-  }
 })
 
 usersRouter.put('/', async(req, res) =>{
